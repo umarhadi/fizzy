@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SplatTest < ActiveSupport::TestCase
+class BubbleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

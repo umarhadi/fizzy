@@ -1,12 +1,12 @@
 class BoostsController < ApplicationController
-  before_action :set_splat
+  before_action :set_bubble
 
   def new
-    @boost = @splat.boosts.build
+    @boost = @bubble.boosts.build
   end
 
   def create
-    @boost = @splat.boosts.new
+    @boost = @bubble.boosts.new
     @boost.save
 
     respond_to do |format|
@@ -16,11 +16,11 @@ class BoostsController < ApplicationController
   end
 
   def index
-    @boosts = @splat.boosts
+    @boosts = @bubble.boosts
   end
 
   private
-    def set_splat
-      @splat = Splat.find(params[:splat_id])
+    def set_bubble
+      @bubble = Bubble.find(params[:bubble_id])
     end
 end

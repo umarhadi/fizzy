@@ -1,5 +1,5 @@
 :root {
-  --splat-size: 30vw;
+  --bubble-size: 30vw;
 }
 
 .windshield {
@@ -10,14 +10,14 @@
   }
 }
 
-.splat {
+.bubble {
   --hover-size: 0;
-  --splat-color: var(--color-ink);
-  --splat-rotate: 20deg;
+  --bubble-color: var(--color-ink);
+  --bubble-rotate: 20deg;
 
   aspect-ratio: 1;
-  block-size: var(--splat-size);
-  color: var(--splat-color, currentColor);
+  block-size: var(--bubble-size);
+  color: var(--bubble-color, currentColor);
   container-type: inline-size;
   display: grid;
   max-inline-size: 100%;
@@ -50,8 +50,8 @@
       scale: 1.1;
       z-index: 999;
 
-      .splat__svg {
-        transform: rotate(calc(var(--splat-rotate) + 10deg));
+      .bubble__svg {
+        transform: rotate(calc(var(--bubble-rotate) + 10deg));
       }
     }
   }
@@ -60,23 +60,23 @@
     grid-area: 1/1;
   }
 
-  .splat__perma & {
-    --splat-size: 40vh !important;
+  .bubble__perma & {
+    --bubble-size: 40vh !important;
   }
 }
 
-.splat__bubble {
+.bubble__bubble {
   background-color: var(--color-bg);
-  border: 0.3em solid var(--splat-color);
+  border: 0.3em solid var(--bubble-color);
   border-radius: 50%;
   position: absolute;
   z-index: -1;
 
   a {
-    color: var(--splat-color);
+    color: var(--bubble-color);
   }
 
-  &:is(.splat__boosts) {
+  &:is(.bubble__boosts) {
     aspect-ratio: 1;
     display: grid;
     min-inline-size: 6ch;
@@ -89,7 +89,7 @@
       text-decoration: none;
     }
 
-    .windshield .splat:hover & {
+    .windshield .bubble:hover & {
       transform: translate(0, 1rem) !important;
     }
 
@@ -98,7 +98,7 @@
     }
   }
 
-  &.splat__category {
+  &.bubble__category {
     inset: auto auto 10cqi -3cqi;
 
     + & {
@@ -109,20 +109,20 @@
       }
     }
 
-    .windshield &:has(.splat__category--new) {
+    .windshield &:has(.bubble__category--new) {
       display: none;
     }
   }
 
-  &.splat__date {
+  &.bubble__date {
     aspect-ratio: 1;
     inset: 2cqi 2cqi auto auto;
   }
 
-  &:where(.splat__meta) {
+  &:where(.bubble__meta) {
     background-color: var(--color-bg);
     block-size: auto;
-    color: var(--splat-color);
+    color: var(--bubble-color);
     display: flex;
     font-size: 5cqi;
     font-weight: 800;
@@ -143,27 +143,27 @@
       padding: 0.2em 0.5em;
 
       .input {
-        color: var(--splat-color);
+        color: var(--bubble-color);
       }
     }
   }
 
   @media (hover: hover) {
-    .windshield .splat:hover & {
+    .windshield .bubble:hover & {
       transform: translate(1rem, 1rem);
     }
 
-    .windshield .splat:hover & + & {
+    .windshield .bubble:hover & + & {
       transform: translate(0, -1rem);
     }
 
-    .windshield .splat:hover & + & + & {
+    .windshield .bubble:hover & + & + & {
       transform: translate(-1rem, -1rem);
     }
   }
 }
 
-.splat__image {
+.bubble__image {
   -webkit-mask-image: url(blob.svg);
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -176,44 +176,44 @@
   mask-size: contain;
   place-items: center;
   pointer-events: none;
-  transform: rotate(var(--splat-rotate));
+  transform: rotate(var(--bubble-rotate));
 
   @media (hover: hover) {
-    .windshield .splat:hover & {
-      transform: rotate(calc(var(--splat-rotate) + 10deg));
+    .windshield .bubble:hover & {
+      transform: rotate(calc(var(--bubble-rotate) + 10deg));
     }
   }
 
   img {
     block-size: 100%;
     object-fit: cover;
-    transform: rotate(calc(var(--splat-rotate) * -1));
+    transform: rotate(calc(var(--bubble-rotate) * -1));
   }
 }
 
-.splat__link {
+.bubble__link {
   content: "";
   inset: 0;
   position: absolute;
   z-index: -1;
 }
 
-.splat__notes {
+.bubble__notes {
   position: relative;
 }
 
-.splat__svg {
+.bubble__svg {
   fill: var(--color-bg);
   pointer-events: none;
   position: relative;
   scale: 1.1;
-  stroke: var(--splat-color);
+  stroke: var(--bubble-color);
   stroke-width: 1.1rem;
   transition: all 200ms ease-out;
   z-index: -1;
 }
 
-.splat__title {
+.bubble__title {
   -webkit-line-clamp: var(--lines, 5);
   -webkit-box-orient: vertical;
   display: -webkit-box;
@@ -229,19 +229,19 @@
   white-space: normal;
 
   @media (hover: hover) {
-    .splat:has(.splat__image):hover & {
+    .bubble:has(.bubble__image):hover & {
       color: var(--color-ink-reversed);
-      text-shadow: 0 0 0.2em var(--splat-color), 0 0 0.2em var(--splat-color), 0 0 0.2em var(--splat-color);
+      text-shadow: 0 0 0.2em var(--bubble-color), 0 0 0.2em var(--bubble-color), 0 0 0.2em var(--bubble-color);
       position: relative;
       z-index: 1;
     }
   }
 }
 
-.splats-list {
+.bubbles-list {
   --hover-size: 0;
 
-  .splat__title-link {
+  .bubble__title-link {
     color: var(--color-txt);
     text-decoration: none;
   }

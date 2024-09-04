@@ -1,4 +1,4 @@
-class Splat < ApplicationRecord
+class Bubble < ApplicationRecord
   belongs_to :creator, class_name: "User", default: -> { Current.user }
 
   has_many :comments, dependent: :destroy

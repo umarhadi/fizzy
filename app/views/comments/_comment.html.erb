@@ -3,7 +3,7 @@
   <div class="flex flex-column full-width">
     <div class="comment__author flex align-center gap-half">
       <strong><%= comment.creator.name %></strong>
-      <%= link_to splat_path(@splat, anchor: "comment_#{comment.id}"), class: "txt-undecorated" do %>
+      <%= link_to bubble_path(@bubble, anchor: "comment_#{comment.id}"), class: "txt-undecorated" do %>
         <time class="txt-subtle"><%= comment.created_at.strftime("%b %d").html_safe %></time>
       <% end %>
     </div>

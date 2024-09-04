@@ -3,19 +3,19 @@
 one:
   body: ""
   creator: :jz
-  splat: one
+  bubble: one
 
 two:
   body: ""
   creator: :kevin
-  splat: two
+  bubble: two
 
 three:
   body: ""
   creator: :kevin
-  splat: one
+  bubble: one
 
 four:
   body: ""
   creator: :jz
-  splat: one
+  bubble: one

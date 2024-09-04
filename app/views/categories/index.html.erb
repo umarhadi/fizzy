@@ -7,7 +7,7 @@
           <strong class="txt-nowrap"><%= category.title %></strong>
           <span class="txt-nowrap"><%= category.id %></span>
         </span>
-        <span><%= category.splats.collect { |splat| splat.title }.to_sentence%></span>
+        <span><%= category.bubbles.collect { |bubble| bubble.title }.to_sentence%></span>
         <%= button_to category_path(category),
             method: :delete, data: { turbo_confirm: "Are you sure you want to delete this category?" },
             class: "btn txt-small" do %>

@@ -1,31 +1,31 @@
 <% content_for :header do %>
   <nav>
-    <%= link_to splats_path, class: "btn flex-item-justify-start" do %>
+    <%= link_to bubbles_path, class: "btn flex-item-justify-start" do %>
       <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
-      <span class="for-screen-reader">All Splats</span>
+      <span class="for-screen-reader">All Bubbles</span>
     <% end %>
 
     <div class="flex-item-justify-end" data-controller="dialog">
-      <%= tag.button class: "btn flex-item-justify-end", popovertarget: "splat-edit-panel" do %>
+      <%= tag.button class: "btn flex-item-justify-end", popovertarget: "bubble-edit-panel" do %>
         <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
-        <span class="for-screen-reader">Edit <%= @splat.title %></span>
+        <span class="for-screen-reader">Edit <%= @bubble.title %></span>
       <% end %>
 
-      <dialog class="panel" id="splat-edit-panel" data-dialog-target="dialog" popover>
+      <dialog class="panel" id="bubble-edit-panel" data-dialog-target="dialog" popover>
         <div class="flex pad">
-          <%= turbo_frame_tag @splat, :edit, src: edit_splat_path(@splat), target: "_top" %>
+          <%= turbo_frame_tag @bubble, :edit, src: edit_bubble_path(@bubble), target: "_top" %>
         </div>
       </dialog>
     </div>
   </nav>
 <% end %>
 
-<div class="splat__perma flex justify-center center margin-block-end-double">
-  <%= render @splat %>
+<div class="bubble__perma flex justify-center center margin-block-end-double">
+  <%= render @bubble %>
 </div>
 
-<section class="comments align-center panel center borderless margin-block flex flex-wrap gap-half" style="--splat-color: <%= @splat.color %>;">
-  <% comments = (@splat.comments + @splat.boosts).sort_by(&:updated_at) %>
+<section class="comments align-center panel center borderless margin-block flex flex-wrap gap-half" style="--bubble-color: <%= @bubble.color %>;">
+  <% comments = (@bubble.comments + @bubble.boosts).sort_by(&:updated_at) %>
   <% boosts = [] %>
 
   <% comments.each_with_index do |comment, index| %>

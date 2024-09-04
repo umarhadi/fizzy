@@ -3,9 +3,9 @@
 one:
   body: I agree.
   creator: :jz
-  splat: :one
+  bubble: :one
 
 two:
   body: Same, let’s do it.
   creator: :kevin
-  splat: :one
+  bubble: :one

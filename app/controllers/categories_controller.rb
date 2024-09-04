@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: :destroy
-  before_action :set_splat, only: %i[ new create ]
+  before_action :set_bubble, only: %i[ new create ]
 
   def index
     @categories = Category.all
@@ -14,8 +14,8 @@ class CategoriesController < ApplicationController
     @category = Category.find_or_create_by(category_params)
     @category.save
 
-    @category.splats << @splat
-    redirect_to splat_path(@splat)
+    @category.bubbles << @bubble
+    redirect_to bubble_path(@bubble)
   end
 
   def destroy
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
-  def set_splat
-    @splat = Splat.find(params[:splat_id])
+  def set_bubble
+    @bubble = Bubble.find(params[:bubble_id])
   end
 end

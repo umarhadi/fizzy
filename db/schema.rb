@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_08_28_215240) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_04_180510) do
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -49,10 +49,19 @@ ActiveRecord::Schema[8.0].define(version: 2024_08_28_215240) do
   create_table "boosts", force: :cascade do |t|
     t.string "body"
     t.integer "creator_id", null: false
-    t.integer "splat_id", null: false
+    t.integer "bubble_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["splat_id"], name: "index_boosts_on_splat_id"
+    t.index ["bubble_id"], name: "index_boosts_on_bubble_id"
+  end
+
+  create_table "bubbles", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "creator_id", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -62,18 +71,18 @@ ActiveRecord::Schema[8.0].define(version: 2024_08_28_215240) do
   end
 
   create_table "categorizations", force: :cascade do |t|
-    t.integer "splat_id", null: false
+    t.integer "bubble_id", null: false
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bubble_id"], name: "index_categorizations_on_bubble_id"
     t.index ["category_id"], name: "index_categorizations_on_category_id"
-    t.index ["splat_id"], name: "index_categorizations_on_splat_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "creator_id", null: false
-    t.integer "splat_id", null: false
+    t.integer "bubble_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,15 +94,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_08_28_215240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
-  create_table "splats", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.string "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "creator_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,8 +110,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_08_28_215240) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "categorizations", "bubbles"
   add_foreign_key "categorizations", "categories"
-  add_foreign_key "categorizations", "splats"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "accounts"
 end

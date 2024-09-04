@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root "splats#index"
+  root "bubbles#index"
 
   resource :session
 
-  resources :splats do
+  resources :bubbles do
     resources :boosts
     resources :categories, shallow: true
     resources :comments

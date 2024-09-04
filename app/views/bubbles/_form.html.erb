@@ -1,4 +1,4 @@
-<%= form_with model: splat, class: "flex flex-column gap full-width" do | form | %>
+<%= form_with model: bubble, class: "flex flex-column gap full-width" do | form | %>
   <%= form.label :title, class: "flex flex-column justify-start align-start" do %>
     <%= form.text_field :title, class: "input full-width", required: true, placeholder: "Name it…" %>
   <% end %>
@@ -7,7 +7,7 @@
     <legend class="for-screen-reader">Color</legend>
 
     <div class="flex align-center gap">
-      <% Splat.colors.keys.each do | color | %>
+      <% Bubble.colors.keys.each do | color | %>
         <label class="btn btn--circle txt-medium" style="--btn-background: <%= color -%>" >
           <%= form.radio_button :color, color %>
           <%= image_tag "check.svg", aria: { hidden: "true" }, size: 24, class: "checked" %>
@@ -21,7 +21,7 @@
     <legend class="for-screen-reader">Category</legend>
 
     <div class="flex align-center gap flex-wrap">
-      <%= collection_check_boxes(:splat, :category_ids, Category.all, :id, :title) do | category | %>
+      <%= collection_check_boxes(:bubble, :category_ids, Category.all, :id, :title) do | category | %>
         <%= category.label(class: "btn txt-medium") { category.check_box + tag.span(category.text) } %>
       <% end %>
 
@@ -35,7 +35,7 @@
   <fieldset class="flex flex-column unpad margin-block-end borderless justify-space-between">
     <legend class="for-screen-reader">Attachment</legend>
     <label class="input input--file input--picture unpad" data-controller="upload-preview">
-      <%= image_tag splat.image.attached? ? splat.image : "default-picture.webp", alt: "Picture",
+      <%= image_tag bubble.image.attached? ? bubble.image : "default-picture.webp", alt: "Picture",
           data: { upload_preview_target: "image" } %>
       <%= form.file_field :image, class: "input", accept: "image/png, image/jpeg, image/jpg, image/webp",
           data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>

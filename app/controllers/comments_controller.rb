@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
-  before_action :set_splat
+  before_action :set_bubble
 
   def create
-    @comment = @splat.comments.create(comment_params)
+    @comment = @bubble.comments.create(comment_params)
     @comment.save
 
-    redirect_to splat_path(@splat, anchor: "comment_#{@comment.id}")
+    redirect_to bubble_path(@bubble, anchor: "comment_#{@comment.id}")
   end
 
   private
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body)
     end
 
-    def set_splat
-      @splat = Splat.find(params[:splat_id])
+    def set_bubble
+      @bubble = Bubble.find(params[:bubble_id])
     end
 end

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SplatsControllerTest < ActionDispatch::IntegrationTest
+class BubblesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

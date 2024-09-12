@@ -261,9 +261,12 @@
 }
 
 .bubbles-list {
+  --bubble-size: 1.2em;
+  --bubble-shift: 15deg;
   --hover-size: 0;
 
-  max-inline-size: 90ch;
+  font-size: clamp(1rem, 1.8cqi, 2rem);
+  max-inline-size: 80ch;
 
   .bubble__title-link {
     color: var(--color-txt);
@@ -273,11 +276,30 @@
   li {
     border-radius: 0.6em;
     list-style: none;
-    padding: 0.5em 1em;
-    transition: background-color 200ms ease;
+    padding: 0.5em var(--inline-space);
+    transition: background-color 200ms ease-out;
 
-    &:hover{
-      background-color: var(--color-selected);
+    @media (hover: hover) {
+      &:hover {
+        background-color: color(from var(--bubble-color) srgb r g b / 0.15);
+
+        .bubble__svg {
+          transform: rotate(calc(var(--bubble-rotate) + var(--bubble-shift))) scale(1.2);
+        }
+      }
     }
+  }
+}
+
+.bubble__title-text {
+  font-weight: 600;
+  flex-grow: 1;
+  white-space: nowrap;
+
+  &::after {
+    border-block-end: 1px dotted var(--color-subtle-dark);
+    content: "";
+    flex-grow: 1;
+    margin-block-end: 0.25em;
   }
 }

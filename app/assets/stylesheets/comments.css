@@ -1,17 +1,21 @@
 .comments {
   --avatar-size: 2.33em;
+  --comment-padding-block: 1.2em;
+  --comment-padding-inline: 1.5em;
 
-  max-inline-size: 90ch;
+  font-size: clamp(1rem, 1.6cqi, 2rem);
+  max-inline-size: 70ch;
+  row-gap: var(--comment-padding-block);
 }
 
 .comment__avatar {
-  margin-block-start: var(--block-space-half);
-  margin-inline: auto calc(var(--block-space) * -0.5);
+  margin-block-start: calc(var(--comment-padding-block) * 0.5);
+  margin-inline: auto calc(var(--comment-padding-inline) * -0.75);
   position: relative;
   z-index: 1;
 
   .comment--mine & {
-    margin-inline: calc(var(--block-space) * -0.5) auto;
+    margin-inline: calc(var(--comment-padding-inline) * -0.75) auto;
   }
 }
 
@@ -29,7 +33,7 @@
 
 .comment__content {
   margin-inline: 0 var(--avatar-size);
-  padding: var(--block-space);
+  padding: var(--comment-padding-block) var(--comment-padding-inline);
 
   .comment--mine & {
     background-color: var(--color-selected);
@@ -37,7 +41,7 @@
   }
 
   .comment:has(+ .comment--upvotes) & {
-    padding-block-end: calc(var(--block-space) * 1.33);
+    padding-block-end: calc(var(--comment-padding-block) * 1.5);
   }
 }
 
@@ -54,7 +58,8 @@
   opacity: 0.5;
 }
 
-.comment--upvotes{
-  margin-block: calc(var(--block-space) * -1.33);
-  padding: var(--block-space-half) var(--inline-space-double);
+.comment--upvotes {
+  font-weight: 600;
+  margin-block: calc(var(--comment-padding-block) * -1);
+  padding: calc(var(--comment-padding-block) * 0.5) var(--comment-padding-inline);
 }

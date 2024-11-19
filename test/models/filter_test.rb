@@ -93,7 +93,7 @@ class FilterTest < ActiveSupport::TestCase
   end
 
   test "summary" do
-    assert_equal "<mark>Most discussed</mark>, tagged <mark>#Mobile</mark>, and assigned to <mark>JZ</mark> in <mark>all projects</mark>", filters(:jz_assignments).summary
+    assert_equal "Most discussed, tagged #Mobile, and assigned to JZ in all projects", filters(:jz_assignments).summary
   end
 
   test "plain summary" do

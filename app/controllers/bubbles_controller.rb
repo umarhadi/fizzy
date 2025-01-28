@@ -16,7 +16,6 @@ class BubblesController < ApplicationController
   end
 
   def show
-    fresh_when etag: @bubble
   end
 
   def edit

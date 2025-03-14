@@ -25,7 +25,7 @@
         <%= search_field_tag "terms[]", nil, class: "input full-width", placeholder: "By keyword…", id: nil %>
 
         <button class="btn">
-          <span  class="for-screen-reader">Apply</span>
+          <span class="for-screen-reader">Apply</span>
           <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
         </button>
       <% end %>
@@ -41,7 +41,7 @@
           <div class="filter__label"><strong>Sort by</strong></div>
           <div>
             <label class="btn filter__button">
-              <%= radio_button_tag "indexed_by", filter.default_indexed_by, filter.default_indexed_by?, class: "for-screen-reader" %>
+              <%= radio_button_tag "indexed_by", filter.default_indexed_by, filter.default_indexed_by?, class: "visually-hidden" %>
               <span>Most active</span>
               <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
             </label>
@@ -50,7 +50,7 @@
           <% Filter::INDEXES.each do |index| %>
             <div>
               <label class="btn filter__button">
-                <%= radio_button_tag "indexed_by", index, filter.indexed_by == index, class: "for-screen-reader" %>
+                <%= radio_button_tag "indexed_by", index, filter.indexed_by == index, class: "visually-hidden" %>
                 <span><%= index.humanize %></span>
                 <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
               </label>
@@ -69,7 +69,7 @@
           <% Current.user.buckets.order(:name).each do |bucket| %>
             <div>
               <label class="btn filter__button">
-                <%= check_box_tag "bucket_ids[]", bucket.id, filter.buckets.include?(bucket), class: "for-screen-reader" %>
+                <%= check_box_tag "bucket_ids[]", bucket.id, filter.buckets.include?(bucket), class: "visually-hidden" %>
                 <span><%= bucket.name %></span>
                 <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
               </label>
@@ -82,7 +82,7 @@
           <% Current.account.tags.order(:title).each do |tag| %>
             <div>
               <label class="btn filter__button">
-                <%= check_box_tag "tag_ids[]", tag.id, filter.tags.include?(tag), class: "for-screen-reader" %>
+                <%= check_box_tag "tag_ids[]", tag.id, filter.tags.include?(tag), class: "visually-hidden" %>
                 <span><%= tag.hashtag %></span>
                 <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
               </label>
@@ -95,7 +95,7 @@
           <div>
             <label class="btn filter__button">
               <%= check_box_tag "assignment_status", "unassigned", filter.assignment_status.unassigned?,
-                    class: "for-screen-reader",
+                    class: "visually-hidden",
                     data: {
                       action: "filter-form#clearCategory", 
                       filter_form_name_param: "assignee_ids[],assigner_ids[]" } %>
@@ -106,7 +106,7 @@
           <div>
             <label class="btn filter__button">
               <%= check_box_tag "assignee_ids[]", Current.user.id, filter.assignees.include?(Current.user),
-                    class: "for-screen-reader",
+                    class: "visually-hidden",
                     data: { action: "filter-form#clearCategory", filter_form_name_param: "assignment_status" } %>
               <span>Me</span>
               <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
@@ -115,7 +115,7 @@
           <% Current.account.users.active.without(Current.user).order(:name).each do |user| %>
             <div>
               <label class="btn filter__button">
-                <%= check_box_tag "assignee_ids[]", user.id, filter.assignees.include?(user), class: "for-screen-reader",
+                <%= check_box_tag "assignee_ids[]", user.id, filter.assignees.include?(user), class: "visually-hidden",
                       data: { action: "filter-form#clearCategory", filter_form_name_param: "assignment_status" } %>
                 <span><%= user.name %></span>
                 <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
@@ -129,7 +129,7 @@
           <div>
             <label class="btn filter__button">
               <%= check_box_tag "creator_ids[]", Current.user.id, filter.creators.include?(Current.user),
-                    class: "for-screen-reader" %>
+                    class: "visually-hidden" %>
               <span>Me</span>
               <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
             </label>
@@ -137,7 +137,7 @@
           <% Current.account.users.active.without(Current.user).order(:name).each do |user| %>
             <div>
               <label class="btn filter__button">
-                <%= check_box_tag "creator_ids[]", user.id, filter.creators.include?(user), class: "for-screen-reader" %>
+                <%= check_box_tag "creator_ids[]", user.id, filter.creators.include?(user), class: "visually-hidden" %>
                 <span><%= user.name %></span>
                 <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
               </label>
@@ -153,7 +153,7 @@
             <% workflow.stages.order(:name).each do |stage| %>
               <div>
                 <label class="btn filter__button">
-                  <%= check_box_tag "stage_ids[]", stage.id, filter.stages.include?(stage), class: "for-screen-reader" %>
+                  <%= check_box_tag "stage_ids[]", stage.id, filter.stages.include?(stage), class: "visually-hidden" %>
                   <span><%= stage.name %></span>
                   <%= image_tag "close.svg", aria: { hidden: true }, size: 24 %>
                 </label>

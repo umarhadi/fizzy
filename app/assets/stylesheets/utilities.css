@@ -263,6 +263,7 @@
 }
 
 /* Accessibility */
+.visually-hidden,
 .for-screen-reader {
   block-size: 1px;
   clip-path: inset(50%);

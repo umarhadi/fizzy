@@ -11,5 +11,15 @@ module ActiveSupport
     fixtures :all
 
     include CardTestHelper, ChangeTestHelper, SessionTestHelper
+
+    # FIXME: Remove when upstream in Rails has landed (https://github.com/rails/rails/pull/54938)
+    def assert_in_body(text)
+      assert_match /#{text}/, @response.body
+    end
+
+    # FIXME: Remove when upstream in Rails has landed (https://github.com/rails/rails/pull/54938)
+    def assert_not_in_body(text)
+      assert_no_match /#{text}/, @response.body
+    end
   end
 end

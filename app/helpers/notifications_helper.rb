@@ -22,7 +22,7 @@ module NotificationsHelper
     tag.div id: dom_id(notification), class: "tray__item" do
       concat(
         link_to(notification,
-          class: "card card--notification",
+          class: [ "card card--notification", { "card--closed": notification.notifiable_target.closed? } ],
           data: { action: "click->dialog#close", turbo_frame: "_top" },
           &)
       )

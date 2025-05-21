@@ -334,6 +334,10 @@
 
     background-color: var(--color-canvas);
 
+    &.card--closed {
+      --card-color: var(--color-card-complete);
+    }
+
     .card__collection {
       font-size: var(--text-xx-small);
       padding-block: 0.5ch;

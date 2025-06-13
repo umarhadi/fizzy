@@ -47,6 +47,15 @@ GIT
       file_repository (>= 1.4.4)
 
 GIT
+  remote: https://github.com/basecamp/queenbee-plugin
+  revision: bf887b5c128570d1b19a0140146ae9aa4ae2915f
+  specs:
+    queenbee (3.2.0)
+      activeresource
+      builder
+      rexml
+
+GIT
   remote: https://github.com/basecamp/queuety
   revision: bf7e2a552fb674533d3e092f06dbf9b5d1ebc753
   branch: rails4
@@ -72,7 +81,7 @@ GIT
 
 GIT
   remote: https://github.com/basecamp/signal_id
-  revision: 7090b0d518b6656d8c8792da8301146da40f3eae
+  revision: 129483ccc1d9452fa7713080fcbf0c012b2f4107
   branch: rails4
   specs:
     signal_id (4.3.2)
@@ -205,6 +214,14 @@ GEM
   specs:
     action_text-trix (2.1.15)
       railties
+    activemodel-serializers-xml (1.0.3)
+      activemodel (>= 5.0.0.a)
+      activesupport (>= 5.0.0.a)
+      builder (~> 3.1)
+    activeresource (6.1.4)
+      activemodel (>= 6.0)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (>= 6.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
@@ -568,6 +585,7 @@ PLATFORMS
 DEPENDENCIES
   actiontext-lexical!
   active_record-tenanted!
+  activeresource
   aws-sdk-s3
   bcrypt (~> 3.1.7)
   bootsnap
@@ -582,11 +600,13 @@ DEPENDENCIES
   jbuilder
   kamal!
   mission_control-jobs
+  mocha
   mysql2
   platform_agent
   portfolio (>= 4.6)!
   propshaft
   puma (>= 5.0)
+  queenbee!
   queuety!
   rails!
   rails_structured_logging!

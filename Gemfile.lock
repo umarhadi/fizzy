@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/basecamp/actiontext-lexical
-  revision: 41a655a5af1e91057c39752e70336cda97703636
+  revision: 8176e814f34572ad9d9195f9fcf28c3363e4d2bd
   branch: remove-diacritics
   specs:
     actiontext-lexical (0.1.0)

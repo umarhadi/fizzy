@@ -5,6 +5,6 @@
     <code><%= command %></code> <%= description %>
   </template>
   <template type="editor">
-    <%= editor_version %>
+    <%= editor_version.gsub(/ +$/, "&nbsp;").html_safe %>
   </template>
 </lexical-prompt-item>

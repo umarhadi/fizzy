@@ -24,7 +24,7 @@
   </span>
 
   <span class="card__meta-text card__meta-text--assignees overflow-ellipsis">
-    <%= card.assignees.any? ? "Assigned to" : "Not assigned" %>
+    <%= "Assigned to" if card.assignees.any? %>
     <%= card.assignees.map { |assignee| "<strong>#{assignee.familiar_name}</strong>" }.to_sentence.html_safe %>
   </span>
 

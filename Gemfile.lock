@@ -1,20 +1,4 @@
 GIT
-  remote: https://github.com/basecamp/file_repository
-  revision: 8c8d1594f3ec7e8c0938e6a7f7def521692344e4
-  ref: 8c8d1594f3ec7e8c0938e6a7f7def521692344e4
-  specs:
-    file_repository (1.4.6)
-
-GIT
-  remote: https://github.com/basecamp/portfolio
-  revision: 86411a53d19a42ce44705a50ebe7c22828597991
-  ref: 86411a53d19a42ce44705a50ebe7c22828597991
-  specs:
-    portfolio (5.2.0)
-      activesupport
-      file_repository (>= 1.4.4)
-
-GIT
   remote: https://github.com/basecamp/queenbee-plugin
   revision: eb01c697de1ad028afc65cc7d9b5345a7a8e849f
   ref: eb01c697de1ad028afc65cc7d9b5345a7a8e849f
@@ -25,47 +9,12 @@ GIT
       rexml
 
 GIT
-  remote: https://github.com/basecamp/queuety
-  revision: bf7e2a552fb674533d3e092f06dbf9b5d1ebc753
-  ref: bf7e2a552fb674533d3e092f06dbf9b5d1ebc753
-  branch: rails4
-  specs:
-    queuety (4.0.2)
-      activerecord
-      service_concurrency_prevention
-
-GIT
   remote: https://github.com/basecamp/rails-structured-logging
   revision: 76960cb5c15fc2b6b5f7542e05d7dcc031cef9e6
   specs:
     rails_structured_logging (0.2.1)
       json
       rails (>= 6.0.0)
-
-GIT
-  remote: https://github.com/basecamp/service_concurrency_prevention
-  revision: 320da99431718615ed86f8723e8b9d3259c602a3
-  ref: 320da99431718615ed86f8723e8b9d3259c602a3
-  specs:
-    service_concurrency_prevention (1.1.1)
-      activesupport
-
-GIT
-  remote: https://github.com/basecamp/signal_id
-  revision: d6c2a5ceed7bb57bf7dcdebdb439e7cd526fca09
-  ref: d6c2a5ceed7bb57bf7dcdebdb439e7cd526fca09
-  branch: rails4
-  specs:
-    signal_id (4.3.2)
-      bcrypt-ruby (>= 3.0.0)
-      google-id-token (>= 1.4.0)
-      mocha
-      multi_json
-      portfolio (>= 4.0)
-      pwned (~> 2.0)
-      queuety (>= 3.0)
-      rails (>= 4.0.2)
-      rails-controller-testing
 
 GIT
   remote: https://github.com/crmne/ruby_llm.git
@@ -80,14 +29,6 @@ GIT
       faraday-retry (>= 1)
       marcel (~> 1.0)
       zeitwerk (~> 2)
-
-GIT
-  remote: https://github.com/jeremy/mysql2.git
-  revision: b5766f5d296745d6aed014c8c0b7d82ef149ade1
-  ref: b5766f5d296745d6aed014c8c0b7d82ef149ade1
-  branch: force_latin1_to_utf8
-  specs:
-    mysql2 (0.5.4.latin1utf8)
 
 GIT
   remote: https://github.com/rails/rails.git
@@ -206,7 +147,6 @@ PATH
       queenbee
       rails (>= 8.1.0.beta1)
       rails_structured_logging
-      signal_id
 
 GEM
   remote: https://rubygems.org/
@@ -251,8 +191,6 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
     bcrypt (3.1.20)
-    bcrypt-ruby (3.1.5)
-      bcrypt (>= 3.1.3)
     bcrypt_pbkdf (1.1.1)
     benchmark (0.4.1)
     bigdecimal (3.2.3)
@@ -317,8 +255,6 @@ GEM
       addressable (>= 2.5.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-id-token (1.4.2)
-      jwt (>= 1)
     hashdiff (1.2.1)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -391,7 +327,6 @@ GEM
     mocha (2.7.1)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
-    multi_json (1.17.0)
     multipart-post (2.4.1)
     net-http (0.6.0)
       uri
@@ -464,7 +399,6 @@ GEM
     public_suffix (6.0.2)
     puma (7.0.3)
       nio4r (~> 2.0)
-    pwned (2.4.1)
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.2.1)
@@ -475,10 +409,6 @@ GEM
       rack (>= 1.3)
     rackup (2.2.1)
       rack (>= 3)
-    rails-controller-testing (1.0.5)
-      actionpack (>= 5.0.1.rc1)
-      actionview (>= 5.0.1.rc1)
-      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
@@ -670,7 +600,6 @@ DEPENDENCIES
   bundler-audit
   capybara
   debug
-  file_repository (~> 1.4.5)!
   fizzy-saas!
   geared_pagination (~> 1.2)
   image_processing (~> 1.14)
@@ -681,15 +610,12 @@ DEPENDENCIES
   lexxy
   mission_control-jobs
   mocha
-  mysql2!
   net-http-persistent
   platform_agent
-  portfolio (>= 4.6)!
   prometheus-client-mmap (~> 1.1)
   propshaft
   puma (>= 5.0)
   queenbee!
-  queuety!
   rails!
   rails_structured_logging!
   redcarpet
@@ -700,8 +626,6 @@ DEPENDENCIES
   selenium-webdriver
   sentry-rails
   sentry-ruby
-  service_concurrency_prevention!
-  signal_id!
   solid_cable (>= 3.0)
   solid_cache (~> 1.0)
   solid_queue (~> 1.1)

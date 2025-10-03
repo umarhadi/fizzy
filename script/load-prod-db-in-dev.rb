@@ -13,27 +13,26 @@ unless Rails.env.local?
 end
 
 identifier = SecureRandom.hex(4)
-signup = Signup.new(
-  email_address: "dev-#{identifier}@example.com",
-  full_name: "Developer #{identifier}",
-  company_name: "Company #{identifier}",
-  password: "secret123456"
-)
+tenant = ActiveRecord::FixtureSet.identify(identifier)
 
-puts "Creating signal identity for #{signup.email_address}..."
-signup.send(:create_signal_identity)
-
-puts "Creating queenbee account ..."
-signup.send(:create_queenbee_account)
-
-path = ApplicationRecord.tenanted_root_config.database_path_for(signup.tenant_name)
+path = ApplicationRecord.tenanted_root_config.database_path_for(tenant)
 FileUtils.mkdir_p(File.dirname(path), verbose: true)
 FileUtils.cp original_dbfile, path, verbose: true
 
 ActiveRecord::Tenanted::DatabaseTasks.migrate_all
 
-ApplicationRecord.with_tenant(signup.tenant_name) do |tenant|
-  Account.sole.update! external_account: signup.signal_account
+ApplicationRecord.with_tenant(tenant) do |tenant|
+  Account.sole.destroy!
 
-  puts "\n\nLogin to http://launchpad.localhost:3011/ as #{signup.email_address} / #{signup.password}"
+  Account.create_with_admin_user(
+    tenant_id: tenant,
+    account_name: "Company #{identifier}",
+    owner_name: "Developer #{identifier}",
+    owner_email: "dev-#{identifier}@example.com")
+
+  user = User.last
+  user.update! password: "secret123456"
+
+  url = Rails.application.routes.url_helpers.root_url(Rails.application.config.action_controller.default_url_options.merge(script_name: Account.sole.slug))
+  puts "\n\nLogin to #{url} as #{user.email_address} / #{user.password}"
 end

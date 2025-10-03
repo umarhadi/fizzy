@@ -15,9 +15,7 @@ load File.expand_path("../gems/fizzy-saas/bin/setup", __dir__) unless Bootstrap.
 
 puts "\n== Preparing database =="
 if ARGV.include?("--reset")
-  system! "bin/rails db:drop db:create db:schema:load db:prepare"
-  system! "bin/rails db:fixtures:load" # load signal id fixtures before running fizzy seeds
-  system! "bin/rails db:seed"
+  system! "bin/rails db:drop db:create db:schema:load db:prepare db:seed"
 else
   system! "bin/rails db:prepare"
 end

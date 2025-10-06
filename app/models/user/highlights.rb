@@ -36,7 +36,6 @@ module User::Highlights
       # Outside of transaction as generating highlights can be a slow operation
       PeriodHighlights.create_or_find_for(collections, starts_at: highlights_starts_at(date), duration: 1.week).tap do |period_highlights|
         if period_highlights
-          puts "Generating highlights for #{date}: #{period_highlights.inspect}"
           weekly_highlights.create! period_highlights: period_highlights, starts_at: highlights_starts_at(date)
         end
       end

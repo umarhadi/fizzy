@@ -50,16 +50,35 @@ class User::DayTimeline
   end
 
   private
+    TIMELINEABLE_ACTIONS = %w[
+      card_assigned
+      card_unassigned
+      card_published
+      card_closed
+      card_reopened
+      card_due_date_added
+      card_due_date_changed
+      card_due_date_removed
+      card_collection_changed
+      comment_created
+    ]
+
     def first_day_with_activity_this_week?
       day.monday? || (earliest_time.present? && earliest_time < day.beginning_of_week(:monday))
     end
 
     def filtered_events
       @filtered_events ||= begin
-        events = Event.where(collection: collections)
+        events = timelineable_events
         events = events.where(creator_id: filter.creators.ids) if filter.creators.present?
         events
       end
+    end
+
+    def timelineable_events
+      Event
+        .where(collection: collections)
+        .where(action: TIMELINEABLE_ACTIONS)
     end
 
     def collections

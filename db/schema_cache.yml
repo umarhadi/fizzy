@@ -474,12 +474,12 @@ columns:
   - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: due_on
-    cast_type: &38 !ruby/object:ActiveRecord::Type::Date
+    cast_type: &40 !ruby/object:ActiveRecord::Type::Date
       precision:
       scale:
       limit:
       timezone:
-    sql_type_metadata: &39 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+    sql_type_metadata: &41 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
       sql_type: date
       type: :date
       limit:
@@ -511,7 +511,7 @@ columns:
     default_function:
     collation:
     comment:
-  - &37 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+  - &39 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: title
     cast_type: *7
@@ -583,11 +583,11 @@ columns:
   - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: all_access
-    cast_type: &33 !ruby/object:ActiveModel::Type::Boolean
+    cast_type: &35 !ruby/object:ActiveModel::Type::Boolean
       precision:
       scale:
       limit:
-    sql_type_metadata: &34 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+    sql_type_metadata: &36 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
       sql_type: boolean
       type: :boolean
       limit:
@@ -865,7 +865,7 @@ columns:
   - *9
   filters_tags:
   - *20
-  - &36 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+  - &38 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: tag_id
     cast_type: *3
@@ -982,7 +982,7 @@ columns:
   - *9
   - *18
   period_highlights:
-  - &35 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+  - &37 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: content
     cast_type: *15
@@ -1107,11 +1107,11 @@ columns:
   - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: rowid
-    cast_type: !ruby/object:ActiveModel::Type::Value
+    cast_type: &33 !ruby/object:ActiveModel::Type::Value
       precision:
       scale:
       limit:
-    sql_type_metadata: !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+    sql_type_metadata: &34 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
       sql_type: ''
       type:
       limit:
@@ -1185,19 +1185,50 @@ columns:
   - *9
   - *32
   - *18
+  sqlite_stat1:
+  - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+    auto_increment:
+    name: idx
+    cast_type: *33
+    sql_type_metadata: *34
+    'null': true
+    default:
+    default_function:
+    collation:
+    comment:
+  - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+    auto_increment:
+    name: stat
+    cast_type: *33
+    sql_type_metadata: *34
+    'null': true
+    default:
+    default_function:
+    collation:
+    comment:
+  - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+    auto_increment:
+    name: tbl
+    cast_type: *33
+    sql_type_metadata: *34
+    'null': true
+    default:
+    default_function:
+    collation:
+    comment:
   steps:
   - *23
   - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: completed
-    cast_type: *33
-    sql_type_metadata: *34
+    cast_type: *35
+    sql_type_metadata: *36
     'null': false
     default: false
     default_function:
     collation:
     comment:
-  - *35
+  - *37
   - *5
   - *6
   - *9
@@ -1205,12 +1236,12 @@ columns:
   - *23
   - *5
   - *6
-  - *36
+  - *38
   - *9
   tags:
   - *5
   - *6
-  - *37
+  - *39
   - *9
   user_settings:
   - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
@@ -1253,8 +1284,8 @@ columns:
   - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: starts_at
-    cast_type: *38
-    sql_type_metadata: *39
+    cast_type: *40
+    sql_type_metadata: *41
     'null': false
     default:
     default_function:
@@ -1263,11 +1294,11 @@ columns:
   - *9
   - *18
   users:
-  - &41 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+  - &43 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: active
-    cast_type: *33
-    sql_type_metadata: *34
+    cast_type: *35
+    sql_type_metadata: *36
     'null': false
     default: true
     default_function:
@@ -1316,8 +1347,8 @@ columns:
   - !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: watching
-    cast_type: *33
-    sql_type_metadata: *34
+    cast_type: *35
+    sql_type_metadata: *36
     'null': false
     default: true
     default_function:
@@ -1347,7 +1378,7 @@ columns:
     comment:
   - *6
   - *9
-  - &40 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
+  - &42 !ruby/object:ActiveRecord::ConnectionAdapters::SQLite3::Column
     auto_increment:
     name: webhook_id
     cast_type: *3
@@ -1401,9 +1432,9 @@ columns:
     collation:
     comment:
   - *9
-  - *40
+  - *42
   webhooks:
-  - *41
+  - *43
   - *24
   - *5
   - *6
@@ -1492,6 +1523,7 @@ primary_keys:
   search_queries: id
   search_results: id
   sessions: id
+  sqlite_stat1:
   steps: id
   taggings: id
   tags: id
@@ -1546,6 +1578,7 @@ data_sources:
   search_queries: true
   search_results: true
   sessions: true
+  sqlite_stat1: true
   steps: true
   taggings: true
   tags: true
@@ -2353,6 +2386,24 @@ indexes:
     valid: true
   - !ruby/object:ActiveRecord::ConnectionAdapters::IndexDefinition
     table: events
+    name: index_events_on_collection_id_and_action_and_created_at
+    unique: false
+    columns:
+    - collection_id
+    - action
+    - created_at
+    lengths: {}
+    orders: {}
+    opclasses: {}
+    where:
+    type:
+    using:
+    include:
+    nulls_not_distinct:
+    comment:
+    valid: true
+  - !ruby/object:ActiveRecord::ConnectionAdapters::IndexDefinition
+    table: events
     name: index_events_on_creator_id
     unique: false
     columns:
@@ -2879,6 +2930,7 @@ indexes:
     nulls_not_distinct:
     comment:
     valid: true
+  sqlite_stat1: []
   steps:
   - !ruby/object:ActiveRecord::ConnectionAdapters::IndexDefinition
     table: steps
@@ -3197,4 +3249,4 @@ indexes:
     nulls_not_distinct:
     comment:
     valid: true
-version: 20251015123003
+version: 20251016153034

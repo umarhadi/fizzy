@@ -67,12 +67,6 @@
     inline-size: var(--column-width-expanded);
     position: relative;
     scroll-snap-align: start;
-    translate: 0;
-    transition: translate var(--column-transition-duration) var(--ease-out-overshoot-subtle);
-
-    .no-transitions & {
-      transition: none;
-    }
 
     &:not(.is-collapsed) {
       padding-inline: var(--column-padding-expanded);
@@ -84,10 +78,6 @@
       .pagination-link.pagination-link--active-when-observed,
       .card {
         display: none;
-      }
-
-      &:not(.cards--considering) {
-        translate: 0 var(--column-width-collapsed);
       }
     }
 
@@ -106,6 +96,16 @@
 
   .cards__transition-container {
     block-size: 100%;
+    translate: 0;
+    transition: translate var(--column-transition-duration) var(--ease-out-overshoot-subtle);
+
+    .is-collapsed:not(.cards--considering) & {
+      translate: 0 var(--column-width-collapsed);
+    }
+
+    .no-transitions & {
+      transition: none;
+    }
   }
 
   .cards__header {

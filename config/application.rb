@@ -29,5 +29,9 @@ module Fizzy
 
     # use routes for error pages instead of static files
     config.exceptions_app = self.routes
+
+    # include the tenant in query logs
+    config.active_record.query_log_tags_enabled = true
+    config.active_record.query_log_tags = [ :tenant ]
   end
 end

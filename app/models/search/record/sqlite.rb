@@ -26,9 +26,9 @@ module Search::Record::SQLite
     def search_scope(relation, query)
       # SQLite: matching scope already selected all columns + FTS5 highlight columns
       # Re-select to add query terms (ActiveRecord replaces the select list)
-      opening_mark = Search::Highlighter::OPENING_MARK
-      closing_mark = Search::Highlighter::CLOSING_MARK
-      ellipsis = Search::Highlighter::ELIPSIS
+      opening_mark = connection.quote(Search::Highlighter::OPENING_MARK)
+      closing_mark = connection.quote(Search::Highlighter::CLOSING_MARK)
+      ellipsis = connection.quote(Search::Highlighter::ELIPSIS)
 
       relation.select(
         "#{table_name}.id",
@@ -40,9 +40,9 @@ module Search::Record::SQLite
         "#{table_name}.title",
         "#{table_name}.content",
         "#{table_name}.created_at",
-        "highlight(search_records_fts, 0, #{connection.quote(opening_mark)}, #{connection.quote(closing_mark)}) AS highlighted_title",
-        "highlight(search_records_fts, 1, #{connection.quote(opening_mark)}, #{connection.quote(closing_mark)}) AS highlighted_content",
-        "snippet(search_records_fts, 1, #{connection.quote(opening_mark)}, #{connection.quote(closing_mark)}, #{connection.quote(ellipsis)}, 20) AS content_snippet",
+        "highlight(search_records_fts, 0, #{opening_mark}, #{closing_mark}) AS highlighted_title",
+        "highlight(search_records_fts, 1, #{opening_mark}, #{closing_mark}) AS highlighted_content",
+        "snippet(search_records_fts, 1, #{opening_mark}, #{closing_mark}, #{ellipsis}, 20) AS content_snippet",
         "#{connection.quote(query.terms)} AS query"
       )
     end

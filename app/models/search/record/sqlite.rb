@@ -7,10 +7,10 @@ module Search::Record::SQLite
     attribute :result_title, :string
     attribute :result_content, :string
 
-    has_one :search_records_fts, -> { with_rowid }, class_name: "Search::Record::SQLite::Fts", foreign_key: :rowid, primary_key: :id
+    has_one :search_records_fts,
+      -> { with_rowid }, class_name: "Search::Record::SQLite::Fts", foreign_key: :rowid, primary_key: :id, dependent: :destroy
 
     after_save :upsert_to_fts5_table
-    after_destroy :delete_from_fts5_table
 
     scope :matching, ->(query, account_id) { joins(:search_records_fts).where("search_records_fts MATCH ?", query) }
   end
@@ -51,9 +51,5 @@ module Search::Record::SQLite
 
     def upsert_to_fts5_table
       Fts.upsert(id, title, content)
-    end
-
-    def delete_from_fts5_table
-      search_records_fts&.destroy
     end
 end

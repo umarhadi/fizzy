@@ -142,7 +142,7 @@ class Notification::BundleTest < ActiveSupport::TestCase
       assert_not_nil email
 
       # Time in Madrid should be 15:30 (UTC+1 in winter)
-      assert_match /everything since 3pm/i, email.text_part&.body&.to_s
+      assert_match /notifications since 3pm/i, email.text_part&.body&.to_s
     end
   end
 

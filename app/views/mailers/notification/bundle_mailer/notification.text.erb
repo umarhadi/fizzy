@@ -1,4 +1,4 @@
-Everything since <%= @bundle.starts_at.strftime("%-l%P on %A, %B %-d") %>
+Notifications since <%= @bundle.starts_at.strftime("%-l%P on %A, %B %-d") %>
 You have <%= pluralize @notifications.count, "new notification" %><%= " in #{ Current.account.name }" if @user.identity.accounts.many? %>.
 
 <% @notifications.group_by(&:card).each do |card, notifications| %>

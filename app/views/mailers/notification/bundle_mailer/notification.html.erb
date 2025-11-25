@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <h1 class="title">Everything since <%= @bundle.starts_at.strftime("%-l%P on %A, %B %-d") %></h1>
+    <h1 class="title">Notifications since <%= @bundle.starts_at.strftime("%-l%P on %A, %B %-d") %></h1>
     <p class="subtitle margin-block-end-double">
       You have <%= link_to pluralize(@notifications.count, "new notification"), notifications_url %><%= " in #{ Current.account.name }" if @user.identity.accounts.many? %>.
     </p>
